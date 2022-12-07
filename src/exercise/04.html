@@ -14,6 +14,7 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+
     // const element = (
     //   <div className="container">
     //     <div className="message">Hello World</div>
@@ -21,10 +22,18 @@
     //   </div>
     // )
 
+    // const element = (
+    //   <div className="container">
+    //     {message({children: 'Hello World'})}
+    //     {message({children: 'Goodbye World'})}
+    //   </div>
+    // )
+
+    // EXTRA CREDIT 1
     const element = (
       <div className="container">
-        {message({children: 'Hello World'})}
-        {message({children: 'Goodbye World'})}
+        {React.createElement(message, {children: 'Hello World'})}
+        {React.createElement(message, {children: 'Goodbye World'})}
       </div>
     )
 
