@@ -13,8 +13,29 @@
     //   return <div className="message">{props.children}</div>
     // }
 
-    function Message(props) {
-      return <div className="message">{props.children}</div>
+    // function Message(props) {
+    //   return <div className="message">{props.children}</div>
+    // }
+
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error('That is not a string')
+        }
+      }
+    }
+
+    Message.propTypes = {
+      greeting: PropTypes.string,
+      subject: PropTypes.string,
     }
 
     // const message = (props) => {
@@ -47,10 +68,18 @@
     // )
 
     // EXTRA CREDIT 2
+    // const element = (
+    //   <div className="container">
+    //     <Message>Hello World</Message>
+    //     <Message>Goodbye World</Message>
+    //   </div>
+    // )
+
+    // EXTRA CREDIT 3
     const element = (
       <div className="container">
-        <Message>Hello World</Message>
-        <Message>Goodbye World</Message>
+        <Message greeting="Hello" subject="World" />
+        <Message greeting="Goodbye" subject="World" />
       </div>
     )
 
