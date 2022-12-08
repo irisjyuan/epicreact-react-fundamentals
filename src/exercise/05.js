@@ -50,10 +50,42 @@ import '../box-styles.css'
 // }
 
 // EXTRA CREDIT 1
+// function Box(props) {
+//   return (
+//     <div
+//       className={`box ${props.className}`}
+//       style={{
+//         backgroundColor: props.style.backgroundColor,
+//         fontStyle: 'italic',
+//       }}
+//     >
+//       {props.children}
+//     </div>
+//   )
+// }
+
+// function App() {
+//   return (
+//     <div>
+//       <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+//         small lightblue box
+//       </Box>
+
+//       <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+//         medium pink box
+//       </Box>
+//       <Box className="box--large" style={{backgroundColor: 'orange'}}>
+//         large orange box
+//       </Box>
+//     </div>
+//   )
+// }
+
+// EXTRA CREDIT 2
 function Box(props) {
   return (
     <div
-      className={`box ${props.className}`}
+      className={`box box--${props.size}`}
       style={{
         backgroundColor: props.style.backgroundColor,
         fontStyle: 'italic',
@@ -67,14 +99,14 @@ function Box(props) {
 function App() {
   return (
     <div>
-      <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+      <Box size="small" style={{backgroundColor: 'lightblue'}}>
         small lightblue box
       </Box>
 
-      <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+      <Box size="medium" style={{backgroundColor: 'pink'}}>
         medium pink box
       </Box>
-      <Box className="box--large" style={{backgroundColor: 'orange'}}>
+      <Box size="large" style={{backgroundColor: 'orange'}}>
         large orange box
       </Box>
     </div>
