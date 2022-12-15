@@ -39,7 +39,36 @@ function UsernameForm({onSubmitUsername}) {
 
   // EXTRA CREDIT 1
 
+  // const inputRef = React.useRef('')
+
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   const inputValue = inputRef.current.value
+  //   return onSubmitUsername(inputValue)
+  // }
+
+  // return (
+  //   <form onSubmit={handleSubmit}>
+  //     <div>
+  //       <label htmlFor="usernameInput">Username:</label>
+  //       <input ref={inputRef} id="usernameInput" type="text" />
+  //     </div>
+  //     <button type="submit">Submit</button>
+  //   </form>
+  // )
+
+  // EXTRA CREDIT 2
+
   const inputRef = React.useRef('')
+  const [error, setError] = React.useState(null)
+
+  function handleChange(event) {
+    const imputValue = event.target.value
+    console.log(imputValue)
+    const isValid = imputValue === imputValue.toLowerCase()
+    console.log(isValid)
+    setError(isValid ? null : 'Username must be lower case')
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -51,9 +80,19 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="usernameInput">Username:</label>
-        <input ref={inputRef} id="usernameInput" type="text" />
+        <input
+          ref={inputRef}
+          id="usernameInput"
+          type="text"
+          onChange={handleChange}
+        />
       </div>
-      <button type="submit">Submit</button>
+      <div role="alert" style={{color: 'red'}}>
+        {error}
+      </div>
+      <button type="submit" disabled={!!error}>
+        Submit
+      </button>
     </form>
   )
 }
