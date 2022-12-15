@@ -59,21 +59,56 @@ function UsernameForm({onSubmitUsername}) {
 
   // EXTRA CREDIT 2
 
+  // const inputRef = React.useRef('')
+  // const [error, setError] = React.useState(null)
+
+  // function handleChange(event) {
+  //   const imputValue = event.target.value
+  //   console.log(imputValue)
+  //   const isValid = imputValue === imputValue.toLowerCase()
+  //   console.log(isValid)
+  //   setError(isValid ? null : 'Username must be lower case')
+  // }
+
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   const inputValue = inputRef.current.value
+  //   return onSubmitUsername(inputValue)
+  // }
+
+  // return (
+  //   <form onSubmit={handleSubmit}>
+  //     <div>
+  //       <label htmlFor="usernameInput">Username:</label>
+  //       <input
+  //         ref={inputRef}
+  //         id="usernameInput"
+  //         type="text"
+  //         onChange={handleChange}
+  //       />
+  //     </div>
+  //     <div role="alert" style={{color: 'red'}}>
+  //       {error}
+  //     </div>
+  //     <button type="submit" disabled={!!error}>
+  //       Submit
+  //     </button>
+  //   </form>
+  // )
+
+  // EXTRA CREDIT 3
+
   const inputRef = React.useRef('')
-  const [error, setError] = React.useState(null)
+  const [username, setUsername] = React.useState('')
 
   function handleChange(event) {
-    const imputValue = event.target.value
-    console.log(imputValue)
-    const isValid = imputValue === imputValue.toLowerCase()
-    console.log(isValid)
-    setError(isValid ? null : 'Username must be lower case')
+    const inputValue = event.target.value
+    setUsername(inputValue.toLowerCase())
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    const inputValue = inputRef.current.value
-    return onSubmitUsername(inputValue)
+    return onSubmitUsername(username)
   }
 
   return (
@@ -85,14 +120,10 @@ function UsernameForm({onSubmitUsername}) {
           id="usernameInput"
           type="text"
           onChange={handleChange}
+          value={username}
         />
       </div>
-      <div role="alert" style={{color: 'red'}}>
-        {error}
-      </div>
-      <button type="submit" disabled={!!error}>
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
